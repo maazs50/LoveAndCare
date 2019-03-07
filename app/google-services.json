@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "314993804919",
+    "firebase_url": "https://love-and-care-55a08.firebaseio.com",
+    "project_id": "love-and-care-55a08",
+    "storage_bucket": "love-and-care-55a08.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314993804919:android:a855766b8f112620",
+        "android_client_info": {
+          "package_name": "com.evolet.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "314993804919-n6usp852hffe0e92g0pbcak3t02c3o38.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb_cORZyvlX80qckcT19TXEJ9iN_bAPkg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314993804919:android:c7a7e772585304a1",
+        "android_client_info": {
+          "package_name": "com.example.loveandcare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "314993804919-n0jtoo4tf6jgraf5q87v2jh4uf9s4oe9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.loveandcare",
+            "certificate_hash": "f314107fc9f7516e9cd622fbf455b01b0a3d9951"
+          }
+        },
+        {
+          "client_id": "314993804919-n6usp852hffe0e92g0pbcak3t02c3o38.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb_cORZyvlX80qckcT19TXEJ9iN_bAPkg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "314993804919-n6usp852hffe0e92g0pbcak3t02c3o38.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
