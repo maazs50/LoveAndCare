@@ -25,7 +25,7 @@ public class LoginActivity extends Activity {
     private FirebaseAuth mAuth;
     private EditText loginEmailText;
     private EditText loginPassText;
-    private Button loginBtn;
+    private Button loginBtn,registerBtn;
     private TextView forgotPassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,13 @@ public class LoginActivity extends Activity {
         loginPassText = findViewById(R.id.password);
         loginBtn = findViewById(R.id.loginButton);
         forgotPassword=findViewById(R.id.forgotPassword);
+        registerBtn=findViewById(R.id.l_registerbtn);
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendTRegister();
+            }
+        });
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,7 +66,7 @@ public class LoginActivity extends Activity {
                 final String loginPass =loginPassText.getText().toString();
                 if (!TextUtils.isEmpty(loginEmail)&&!TextUtils.isEmpty(loginPass)){
 
-                    final ProgressDialog progresRing = ProgressDialog.show(LoginActivity.this, "Love and Care Admin", "Logging in...", true);
+                    final ProgressDialog progresRing = ProgressDialog.show(LoginActivity.this, "Love and Care", "Logging in...", true);
                     progresRing.setCancelable(false);
                     new Thread(new Runnable() {
                         @Override
@@ -91,7 +98,7 @@ public class LoginActivity extends Activity {
 
                         }
                     }).start();
-                }else{
+                } else {
                     Toast.makeText(LoginActivity.this,"Enter all the fields",Toast.LENGTH_LONG).show();
                 }
             }
@@ -99,6 +106,12 @@ public class LoginActivity extends Activity {
     }
     public void sendToMain(){
         Intent mainIntent=new Intent(LoginActivity.this, HomeActivity.class);
+        startActivity(mainIntent);
+        finish();
+
+    }
+    public void sendTRegister(){
+        Intent mainIntent=new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(mainIntent);
         finish();
 

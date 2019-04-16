@@ -41,15 +41,15 @@ public class MedicinesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_medicines, container, false);
-        firebaseFirestore=FirebaseFirestore.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
 
         medicines = new ArrayList<>();
         adapter = new ProductsAdapter(getContext(), medicines);
-        medicinesListView = (ListView)view.findViewById(R.id.medicinesListView);
+        medicinesListView = (ListView) view.findViewById(R.id.medicinesListView);
         medicinesListView.setAdapter(adapter);
 
-        Query query=firebaseFirestore.collection("Medicine").orderBy("name", Query.Direction.DESCENDING);
+        Query query = firebaseFirestore.collection("Medicine").orderBy("name", Query.Direction.DESCENDING);
         query.addSnapshotListener(getActivity(), new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
@@ -58,16 +58,15 @@ public class MedicinesFragment extends Fragment {
                     for (DocumentChange doc : documentSnapshots.getDocumentChanges()) {
 
                         if (doc.getType() == DocumentChange.Type.ADDED) {
-                            String id=doc.getDocument().get("id").toString();
-                            String name=doc.getDocument().getString("name");
-                            String price=doc.getDocument().getString("price");
-                            String unit=doc.getDocument().getString("unit");
-                            String category=doc.getDocument().getString("category");
-                            String url=doc.getDocument().getString("url");
+                            String id = doc.getDocument().get("id").toString();
+                            String name = doc.getDocument().getString("name");
+                            String price = doc.getDocument().getString("price");
+                            String unit = doc.getDocument().getString("unit");
+                            String category = doc.getDocument().getString("category");
+                            String url = doc.getDocument().getString("url");
 
 
-
-                            ProductItem item = new ProductItem(id,name,price,unit,category,url);
+                            ProductItem item = new ProductItem(id, name, price, unit, category, url);
                             medicines.add(item);
 
 
@@ -76,15 +75,11 @@ public class MedicinesFragment extends Fragment {
                         }
                     }
 
-                }
-                else{
-                    Toast.makeText(getContext(), "No data",Toast.LENGTH_SHORT ).show();
+                } else {
+                    Toast.makeText(getContext(), "No data", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-
-
 
         // Inflate the layout for this fragment
         return view;

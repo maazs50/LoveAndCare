@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,7 +52,7 @@ public class ProductsAdapter extends ArrayAdapter<ProductItem> {
         TextView prodPrice = (TextView)rootView.findViewById(R.id.prodPricePerUnit);
         final TextView prodUnit = (TextView)rootView.findViewById(R.id.prodUnit);
         final Button prodAdd=(Button) rootView.findViewById(R.id.addToCart);
-
+        final Vibrator vibe = (Vibrator)getContext().getSystemService(Context.VIBRATOR_SERVICE);
         String url=productItems.get(position).getProdImage();
         Glide
                 .with(parent)
@@ -62,12 +63,14 @@ public class ProductsAdapter extends ArrayAdapter<ProductItem> {
 
 
         prodName.setText(productItems.get(position).getProdName());
-        prodPrice.setText("Price ₹"+productItems.get(position).getProdPrice());
+        prodPrice.setText("₹"+productItems.get(position).getProdPrice());
         prodUnit.setText("Units: "+productItems.get(position).getUnit());
         //Action when user clicks on button
         prodAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                vibe.vibrate(100);
                 mAuth=FirebaseAuth.getInstance();
                 String user_id=mAuth.getUid();
                 final String name=productItems.get(position).getProdName();
@@ -85,6 +88,7 @@ public class ProductsAdapter extends ArrayAdapter<ProductItem> {
                 db.collection("Customer").document("Cart").collection(user_id).document(cat+"-"+name).set(data).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
+
                         Toast.makeText(getContext(),name+" added!" ,Toast.LENGTH_SHORT ).show();
                     }
                 });

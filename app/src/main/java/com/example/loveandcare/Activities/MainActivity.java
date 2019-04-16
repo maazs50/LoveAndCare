@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_care:
                     mTextMessage.setText("Care");
                     return true;
-                     case R.id.navigation_cart:
+                case R.id.navigation_cart:
                     mTextMessage.setText("Cart");
                     return true;
                 case R.id.navigation_orders:
@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        FirebaseFirestore db=FirebaseFirestore.getInstance();
-        Map<String,Object> map=new HashMap<>();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Map<String, Object> map = new HashMap<>();
         map.put("Name", "Demo");
         db.collection("Demo").document().set(map);
     }

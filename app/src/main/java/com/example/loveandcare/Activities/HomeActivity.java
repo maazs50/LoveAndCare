@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.loveandcare.Fragments.CareFragment;
 import com.example.loveandcare.Fragments.CartFragment;
@@ -30,7 +31,6 @@ public class HomeActivity extends AppCompatActivity {
     FragmentManager fragmentManager = HomeActivity.this.getSupportFragmentManager();
   FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
     FirebaseAuth mAuth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +77,7 @@ public class HomeActivity extends AppCompatActivity {
                         fragmentTransaction4.commit();
                         return true;
                     case R.id.navigation_cart:
+
                         CartFragment cartFragment = new CartFragment();
                         FragmentTransaction fragmentTransaction5 = fragmentManager.beginTransaction();
                         fragmentTransaction5.replace(R.id.container, cartFragment);

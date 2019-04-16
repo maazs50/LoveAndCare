@@ -41,13 +41,13 @@ public class CareFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_care, container, false);
-        firebaseFirestore=FirebaseFirestore.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
         care = new ArrayList<>();
         adapter = new ProductsAdapter(getContext(), care);
-        careListView = (ListView)view.findViewById(R.id.careListView);
+        careListView = (ListView) view.findViewById(R.id.careListView);
         careListView.setAdapter(adapter);
 
-        Query query=firebaseFirestore.collection("Care").orderBy("name", Query.Direction.DESCENDING);
+        Query query = firebaseFirestore.collection("Care").orderBy("name", Query.Direction.DESCENDING);
         query.addSnapshotListener(getActivity(), new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
@@ -55,16 +55,15 @@ public class CareFragment extends Fragment {
                     for (DocumentChange doc : documentSnapshots.getDocumentChanges()) {
 
                         if (doc.getType() == DocumentChange.Type.ADDED) {
-                            String id=doc.getDocument().get("id").toString();
-                            String name=doc.getDocument().getString("name");
-                            String price=doc.getDocument().getString("price");
-                            String unit=doc.getDocument().getString("unit");
-                            String category=doc.getDocument().getString("category");
-                            String url=doc.getDocument().getString("url");
+                            String id = doc.getDocument().get("id").toString();
+                            String name = doc.getDocument().getString("name");
+                            String price = doc.getDocument().getString("price");
+                            String unit = doc.getDocument().getString("unit");
+                            String category = doc.getDocument().getString("category");
+                            String url = doc.getDocument().getString("url");
 
 
-
-                            ProductItem item = new ProductItem(id,name,price,unit,category,url);
+                            ProductItem item = new ProductItem(id, name, price, unit, category, url);
                             care.add(item);
 
 
@@ -73,14 +72,12 @@ public class CareFragment extends Fragment {
                         }
                     }
 
-                }
-                else{
-                    Toast.makeText(getContext(), "No data",Toast.LENGTH_SHORT ).show();
+                } else {
+                    Toast.makeText(getContext(), "No data", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
-
 
 
         return view;

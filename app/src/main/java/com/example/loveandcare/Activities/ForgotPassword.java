@@ -19,34 +19,34 @@ public class ForgotPassword extends AppCompatActivity {
     private EditText resetEmail;
     private Button resetPassword;
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
-        resetEmail=findViewById(R.id.username);
-        resetPassword=findViewById(R.id.reset_password);
-        mAuth= FirebaseAuth.getInstance();
+        resetEmail = findViewById(R.id.username);
+        resetPassword = findViewById(R.id.reset_password);
+        mAuth = FirebaseAuth.getInstance();
         resetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userEmail=resetEmail.getText().toString();
-                if(TextUtils.isEmpty(userEmail)){
-                    Toast.makeText(getApplicationContext(),"Please enter your valid email address" ,Toast.LENGTH_LONG ).show();
+                String userEmail = resetEmail.getText().toString();
+                if (TextUtils.isEmpty(userEmail)) {
+                    Toast.makeText(getApplicationContext(), "Please enter your valid email address", Toast.LENGTH_LONG).show();
 
-                }else{
+                } else {
 
                     mAuth.sendPasswordResetEmail(userEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()){
+                            if (task.isSuccessful()) {
 
-                                Toast.makeText(getApplicationContext(),"Please check your registered email" ,Toast.LENGTH_LONG ).show();
+                                Toast.makeText(getApplicationContext(), "Please check your registered email", Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(ForgotPassword.this, LoginActivity.class));
                                 finish();
-                            }
-                            else{
+                            } else {
 
-                                Toast.makeText(getApplicationContext(),"Invalid user or user does not exist!" ,Toast.LENGTH_LONG ).show();
+                                Toast.makeText(getApplicationContext(), "Invalid user or user does not exist!", Toast.LENGTH_LONG).show();
 
                             }
                         }
