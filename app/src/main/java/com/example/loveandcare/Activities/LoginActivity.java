@@ -59,7 +59,7 @@ public class LoginActivity extends Activity {
                 final String loginPass =loginPassText.getText().toString();
                 if (!TextUtils.isEmpty(loginEmail)&&!TextUtils.isEmpty(loginPass)){
 
-                    final ProgressDialog progresRing = ProgressDialog.show(LoginActivity.this, "Love and Care Admin", "Logging in...", true);
+                    final ProgressDialog progresRing = ProgressDialog.show(LoginActivity.this, "Love and Care", "Logging in...", true);
                     progresRing.setCancelable(false);
                     new Thread(new Runnable() {
                         @Override
